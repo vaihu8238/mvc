@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 include "model.php";
 
@@ -13,7 +13,8 @@ class control extends Model
         switch($url) 
         {
             case "/index":
-                if (isset($_REQUEST['sub'])) {
+                if (isset($_REQUEST['sub'])) 
+                {
                     $name = $_REQUEST['nm'];
                     $file = $_FILES['file']['name'];
                     $path = "images/". $file;
@@ -22,7 +23,7 @@ class control extends Model
 
                     $data = array(
                         "name" => $name,
-                        "file" => $file
+                        "file1" => $file
                     );
 
                     $ins = $this->insert("users",$data);
@@ -37,10 +38,15 @@ class control extends Model
                 include "index.php";
                 break;
 
+
+
             case "/manage-users":
                 $user_arr = $this->select("users");
                 include "manage-user.php";
-                break;  
+                break; 
+
+
+
                      
             case "/update-users":
                 if($_REQUEST['update_id'])
@@ -51,10 +57,59 @@ class control extends Model
                        "uid"=>$id 
                     );
 
-                    $this->select_where("users",$where);
+                    $res=$this->select_where("users",$where);
+
+                  $fetch=  $res->fetch_object();
+                //  echo $fetch->file;
+
+                //  exit;
+                if(isset($_REQUEST['submit']))
+                {
+                    $name=$_REQUEST['nm'];
+                    $file=$_FILES['file']['name'];
+                    $temp_file = $_FILES['file']['tmp_name'];
+                    $path ="images/".$file;
+
+                    move_uploaded_file($temp_file,$path);
+
+                    // echo $file;exit;
+                    
+            
+                    if($_FILES['file']['size'] > 0)
+                    {
+
+                        
+                        
+                        $data = array(
+                            "user_name"=>$name,
+                            "user_image"=>$file
+                        );
+    
+                    }
+
+                    else
+                    {
+                        $data = array(
+                            "user_name"=>$name
+                           
+                        );
+    
+                    }
+
+                        // print_r($data);
+                        // exit;
+
+                   $r =  $this->update("users",$data,$where);
+                        // print_r ($r);
+                  
+                }
+
                 }
                 include "update-user.php";
                 break;
+
+
+
 
             case"/delete-users":
                 if($_REQUEST['del_id'])
@@ -82,4 +137,4 @@ class control extends Model
 }
 $obj = new control();
 
-?>
+?> -->

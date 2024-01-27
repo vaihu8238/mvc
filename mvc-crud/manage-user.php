@@ -12,7 +12,7 @@
 <table border="1" style="padding: 10px; ">
 
 <tr>
-    <th>User Data</th>
+    <th>User Data </th>
    
 </tr>
 
@@ -28,8 +28,8 @@ if(!empty($user_arr))
 <tr>
     <td><?php  echo $user->uid;?></td>
     <td><?php  echo $user->name;?></td>
-    <td><?php  echo $user->file;?></td>
-    <td><img src="images/<?php echo $user->file?>" alt="" height="100px"></td>
+    <td><?php  echo $user->file1;?></td>
+    <td><img src="images/<?php echo $user->file1?>" alt="" height="100px"></td>
 
 
     <td>
@@ -44,15 +44,14 @@ if(!empty($user_arr))
         </a>
     </td>
         
-    
+   
 </tr>
 
 
 <?php } } ?>
+<th> <button><a href="/mvc/mvc-crud/index">back</button></a></th>
 
-
-
- 
 </table>
+
 </body>
 </html>

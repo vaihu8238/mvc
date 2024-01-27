@@ -9,8 +9,12 @@
 
 <form method="post" enctype="multipart/form-data">
 
-Name:<input type="text" name="nm" value=""/><br><br>
+
+<img src="images/<?php echo  $fetch->file1;?>" alt="" height="100"><br>
+<?php echo  $fetch->file1;?><br><br>
+Name:<input type="text" name="nm" value="<?php echo  $fetch->name;?>"/><br><br>
 File:<input type="file" name="file"/>
+
    
 <br><br>
 <input type="submit" name="submit" value="Update">
